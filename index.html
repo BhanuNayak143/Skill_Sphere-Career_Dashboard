@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SkillSphere - Student career and skill development dashboard">
+  <title>SkillSphere | Career Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">S</div>
+        <div><strong>Skill<span>Sphere</span></strong><small>Career OS</small></div>
+      </div>
+
+      <nav class="nav">
+        <p class="nav-label">Workspace</p>
+        <a class="nav-link active" href="#dashboard" data-page="dashboard"><span>⌂</span> Dashboard</a>
+        <a class="nav-link" href="#skills" data-page="skills"><span>◈</span> My Skills</a>
+        <a class="nav-link" href="#roadmap" data-page="roadmap"><span>⌁</span> Career Roadmap</a>
+        <a class="nav-link" href="#jobs" data-page="jobs"><span>▣</span> Job Board</a>
+        <a class="nav-link" href="#projects" data-page="projects"><span>◫</span> Projects</a>
+        <a class="nav-link" href="#analytics" data-page="analytics"><span>◔</span> Analytics</a>
+        <p class="nav-label space-top">Account</p>
+        <a class="nav-link" href="#profile" data-page="profile"><span>◎</span> Profile</a>
+        <button class="nav-link nav-button" id="themeToggle"><span>☾</span> Dark mode</button>
+      </nav>
+
+      <div class="sidebar-card">
+        <div class="mini-orb">✦</div>
+        <strong>Keep your streak alive!</strong>
+        <p>Complete one learning activity today.</p>
+        <div class="progress"><i style="width:78%"></i></div>
+        <small>5 of 7 days</small>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-btn mobile-menu" id="menuBtn">☰</button>
+        <div class="breadcrumb">Workspace <span>/</span> <b id="pageTitle">Dashboard</b></div>
+        <div class="top-actions">
+          <button class="icon-btn" id="notificationBtn" aria-label="Notifications">♢<i class="notification-dot"></i></button>
+          <div class="user-menu">
+            <div class="avatar">BP</div>
+            <div class="user-meta"><b>Bhanu Prakash</b><span>Student</span></div>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-container">
+        <!-- DASHBOARD -->
+        <section class="page active" id="page-dashboard">
+          <div class="hero">
+            <div>
+              <span class="eyebrow">THURSDAY · 01 OCT 2026</span>
+              <h1>Build skills.<br><em>Build your future.</em></h1>
+              <p>Your personal career workspace for learning, projects and job readiness.</p>
+              <button class="primary-btn" onclick="navigate('roadmap')">Continue roadmap <span>→</span></button>
+            </div>
+            <div class="hero-art">
+              <div class="ring ring-a"></div><div class="ring ring-b"></div>
+              <div class="floating-card fc-one">⚡ <b>7 day</b><small>learning streak</small></div>
+              <div class="floating-card fc-two">✓ <b>82%</b><small>job readiness</small></div>
+              <div class="hero-orb">S<span>✦</span></div>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card"><div class="stat-icon purple">◈</div><div><span>Skills mastered</span><strong>12</strong><small class="up">↑ 3 this month</small></div></div>
+            <div class="stat-card"><div class="stat-icon blue">◷</div><div><span>Learning hours</span><strong>64.5</strong><small class="up">↑ 12.4% vs last month</small></div></div>
+            <div class="stat-card"><div class="stat-icon green">✓</div><div><span>Projects built</span><strong>8</strong><small class="up">↑ 2 this month</small></div></div>
+            <div class="stat-card"><div class="stat-icon orange">↗</div><div><span>Job readiness</span><strong>82%</strong><small>Top 18% of learners</small></div></div>
+          </div>
+
+          <div class="two-col">
+            <div class="panel">
+              <div class="panel-head"><div><h2>Learning activity</h2><p>Hours invested over the last 7 days</p></div><button class="ghost-btn" onclick="navigate('analytics')">View analytics →</button></div>
+              <div class="chart-wrap"><canvas id="activityChart" width="700" height="260"></canvas></div>
+              <div class="chart-days"><span>Fri</span><span>Sat</span><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span></div>
+            </div>
+            <div class="panel">
+              <div class="panel-head"><div><h2>Today’s focus</h2><p>3 tasks left</p></div><span class="completion">67%</span></div>
+              <div class="task-list">
+                <label class="task done"><input type="checkbox" checked><span><b>Complete JavaScript DOM lesson</b><small>30 min · Frontend</small></span><i>✓</i></label>
+                <label class="task"><input type="checkbox"><span><b>Build responsive navbar</b><small>45 min · Project</small></span><i>○</i></label>
+                <label class="task"><input type="checkbox"><span><b>Practice 5 interview questions</b><small>20 min · Interview</small></span><i>○</i></label>
+              </div>
+              <button class="full-btn" onclick="showToast('Focus session started!')">Start focus session</button>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head"><div><h2>Recommended next steps</h2><p>Personalized from your career roadmap</p></div><button class="ghost-btn" onclick="navigate('roadmap')">See roadmap →</button></div>
+            <div class="recommendations">
+              <div class="recommend-card"><div class="rec-icon">JS</div><div><b>Master asynchronous JavaScript</b><p>Promises, async/await and API requests</p><div class="tag-row"><span>Intermediate</span><span>45 min</span></div></div><button onclick="showToast('Lesson added to your plan')">＋</button></div>
+              <div class="recommend-card"><div class="rec-icon react">⚛</div><div><b>Build a React portfolio</b><p>Turn your projects into a professional showcase</p><div class="tag-row"><span>Project</span><span>4 hours</span></div></div><button onclick="showToast('Project added to your plan')">＋</button></div>
+              <div class="recommend-card"><div class="rec-icon interview">?</div><div><b>Frontend interview prep</b><p>Practice the 25 questions recruiters ask</p><div class="tag-row"><span>Career</span><span>1 hour</span></div></div><button onclick="showToast('Prep added to your plan')">＋</button></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section class="page" id="page-skills">
+          <div class="section-heading"><div><span class="eyebrow">YOUR TOOLKIT</span><h1>My Skills</h1><p>Track what you know and identify what to learn next.</p></div><button class="primary-btn" onclick="openModal('skillModal')">＋ Add skill</button></div>
+          <div class="skills-overview">
+            <div class="skill-score"><div class="score-ring"><b>78</b><span>/100</span></div><div><h3>Skill strength</h3><p>You're making strong progress. Keep building projects to improve practical confidence.</p></div></div>
+            <div class="mini-stat"><span>12</span><small>Skills tracked</small></div><div class="mini-stat"><span>7</span><small>In progress</small></div><div class="mini-stat"><span>4</span><small>Need practice</small></div>
+          </div>
+          <div class="skill-filters"><button class="filter active" data-filter="all">All skills</button><button class="filter" data-filter="frontend">Frontend</button><button class="filter" data-filter="backend">Backend</button><button class="filter" data-filter="tools">Tools</button></div>
+          <div class="skills-grid">
+            <article class="skill-card" data-category="frontend"><div class="skill-top"><div class="skill-logo html">5</div><span class="level expert">Expert</span></div><h3>HTML5</h3><p>Semantic structure & accessibility</p><div class="bar"><i style="width:92%"></i></div><div class="skill-foot"><span>92%</span><small>Last practiced today</small></div></article>
+            <article class="skill-card" data-category="frontend"><div class="skill-top"><div class="skill-logo css">#</div><span class="level advanced">Advanced</span></div><h3>CSS3</h3><p>Layouts, animation & responsive UI</p><div class="bar"><i style="width:84%"></i></div><div class="skill-foot"><span>84%</span><small>Last practiced yesterday</small></div></article>
+            <article class="skill-card" data-category="frontend"><div class="skill-top"><div class="skill-logo js">JS</div><span class="level advanced">Advanced</span></div><h3>JavaScript</h3><p>DOM, ES6+, APIs & async programming</p><div class="bar"><i style="width:76%"></i></div><div class="skill-foot"><span>76%</span><small>Practice recommended</small></div></article>
+            <article class="skill-card" data-category="frontend"><div class="skill-top"><div class="skill-logo react">⚛</div><span class="level learning">Learning</span></div><h3>React</h3><p>Components, hooks & state management</p><div class="bar"><i style="width:48%"></i></div><div class="skill-foot"><span>48%</span><small>6 lessons remaining</small></div></article>
+            <article class="skill-card" data-category="backend"><div class="skill-top"><div class="skill-logo node">N</div><span class="level learning">Learning</span></div><h3>Node.js</h3><p>REST APIs & server-side JavaScript</p><div class="bar"><i style="width:42%"></i></div><div class="skill-foot"><span>42%</span><small>8 lessons remaining</small></div></article>
+            <article class="skill-card" data-category="backend"><div class="skill-top"><div class="skill-logo sql">DB</div><span class="level advanced">Advanced</span></div><h3>MySQL</h3><p>Queries, joins, design & optimization</p><div class="bar"><i style="width:71%"></i></div><div class="skill-foot"><span>71%</span><small>Last practiced 3 days ago</small></div></article>
+            <article class="skill-card" data-category="tools"><div class="skill-top"><div class="skill-logo git">⌘</div><span class="level advanced">Advanced</span></div><h3>Git & GitHub</h3><p>Version control & collaboration</p><div class="bar"><i style="width:80%"></i></div><div class="skill-foot"><span>80%</span><small>Last practiced today</small></div></article>
+            <article class="skill-card" data-category="backend"><div class="skill-top"><div class="skill-logo python">Py</div><span class="level learning">Learning</span></div><h3>Python</h3><p>Programming fundamentals & automation</p><div class="bar"><i style="width:55%"></i></div><div class="skill-foot"><span>55%</span><small>5 lessons remaining</small></div></article>
+          </div>
+        </section>
+
+        <!-- ROADMAP -->
+        <section class="page" id="page-roadmap">
+          <div class="section-heading"><div><span class="eyebrow">YOUR 90-DAY PLAN</span><h1>Frontend Developer Roadmap</h1><p>A focused path from fundamentals to job-ready.</p></div><span class="roadmap-progress">42% complete</span></div>
+          <div class="roadmap">
+            <div class="road-step completed"><div class="step-marker">✓</div><div class="step-content"><span>PHASE 01 · COMPLETED</span><h2>Web Foundations</h2><p>Build a strong base with HTML, CSS, accessibility and responsive design.</p><div class="road-tags"><b>HTML</b><b>CSS</b><b>Accessibility</b></div></div><div class="step-status">100%</div></div>
+            <div class="road-step current"><div class="step-marker">02</div><div class="step-content"><span>PHASE 02 · IN PROGRESS</span><h2>JavaScript Mastery</h2><p>Move from syntax to real applications using DOM, APIs, async JavaScript and modern ES6+.</p><div class="bar"><i style="width:62%"></i></div><small>62% complete · 8 of 13 lessons</small><div class="road-tags"><b>DOM</b><b>Fetch API</b><b>Async/Await</b></div></div><button class="outline-btn" onclick="showToast('Opening JavaScript module…')">Continue →</button></div>
+            <div class="road-step"><div class="step-marker">03</div><div class="step-content"><span>PHASE 03 · NEXT</span><h2>React & Modern UI</h2><p>Learn component-driven development and create polished interfaces that recruiters can explore.</p><div class="road-tags"><b>React</b><b>Hooks</b><b>Vite</b></div></div><div class="locked">🔒</div></div>
+            <div class="road-step"><div class="step-marker">04</div><div class="step-content"><span>PHASE 04 · NEXT</span><h2>Portfolio & Interview</h2><p>Package your work, strengthen your GitHub profile and practice real interview scenarios.</p><div class="road-tags"><b>Portfolio</b><b>DSA Basics</b><b>Interviews</b></div></div><div class="locked">🔒</div></div>
+          </div>
+        </section>
+
+        <!-- JOBS -->
+        <section class="page" id="page-jobs">
+          <div class="section-heading"><div><span class="eyebrow">OPPORTUNITIES</span><h1>Job Board</h1><p>Roles matched to your current skills and career goal.</p></div></div>
+          <div class="job-search"><span>⌕</span><input id="jobSearch" placeholder="Search jobs, skills or companies…"><select id="jobType"><option value="all">All types</option><option>Internship</option><option>Full-time</option></select></div>
+          <div class="jobs-list" id="jobsList">
+            <article class="job-card" data-search="frontend developer react javascript bengaluru internship"><div class="company-logo">A</div><div class="job-main"><span class="job-match">92% match</span><h2>Frontend Developer Intern</h2><p>Acme Digital · Bengaluru · Hybrid</p><div class="job-tags"><b>JavaScript</b><b>React</b><b>CSS</b></div></div><div class="job-side"><strong>₹20k–30k</strong><small>Internship</small><button class="outline-btn apply-btn">View role</button></div></article>
+            <article class="job-card" data-search="software developer javascript node full time bengaluru"><div class="company-logo blue-logo">N</div><div class="job-main"><span class="job-match">86% match</span><h2>Junior Software Developer</h2><p>Nova Labs · Bengaluru · On-site</p><div class="job-tags"><b>JavaScript</b><b>Node.js</b><b>SQL</b></div></div><div class="job-side"><strong>₹4.5–6 LPA</strong><small>Full-time</small><button class="outline-btn apply-btn">View role</button></div></article>
+            <article class="job-card" data-search="ui developer html css javascript remote internship"><div class="company-logo green-logo">U</div><div class="job-main"><span class="job-match">81% match</span><h2>UI Developer Intern</h2><p>Uplift Studio · Remote · India</p><div class="job-tags"><b>HTML</b><b>CSS</b><b>Figma</b></div></div><div class="job-side"><strong>₹15k–25k</strong><small>Internship</small><button class="outline-btn apply-btn">View role</button></div></article>
+          </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section class="page" id="page-projects">
+          <div class="section-heading"><div><span class="eyebrow">BUILD IN PUBLIC</span><h1>My Projects</h1><p>Turn your skills into evidence that recruiters can see.</p></div><button class="primary-btn" onclick="openModal('projectModal')">＋ New project</button></div>
+          <div class="projects-grid">
+            <article class="project-card featured-project"><div class="project-cover cover-one"><span>ATTENDANCE OS</span><div>⌁</div></div><div class="project-body"><div class="project-title"><h2>Smart Attendance</h2><span class="status live">Live</span></div><p>Responsive attendance management interface with student analytics and faculty workflows.</p><div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div><div class="project-foot"><span>↗ 124 views</span><button onclick="showToast('Project preview opened')">Preview →</button></div></div></article>
+            <article class="project-card"><div class="project-cover cover-two"><span>FINANCE</span><div>₹</div></div><div class="project-body"><div class="project-title"><h2>FinTrack Dashboard</h2><span class="status progress-status">In progress</span></div><p>A clean personal finance dashboard for tracking spending and savings goals.</p><div class="project-tags"><span>JavaScript</span><span>Charts</span></div><div class="project-foot"><span>Updated 2 days ago</span><button onclick="showToast('Project editor opened')">Edit →</button></div></div></article>
+            <article class="project-card"><div class="project-cover cover-three"><span>WEATHER</span><div>☼</div></div><div class="project-body"><div class="project-title"><h2>WeatherNow</h2><span class="status live">Live</span></div><p>Minimal weather interface with location search and forecast cards.</p><div class="project-tags"><span>API</span><span>JavaScript</span></div><div class="project-foot"><span>↗ 89 views</span><button onclick="showToast('Project preview opened')">Preview →</button></div></div></article>
+          </div>
+        </section>
+
+        <!-- ANALYTICS -->
+        <section class="page" id="page-analytics">
+          <div class="section-heading"><div><span class="eyebrow">PERFORMANCE</span><h1>Learning Analytics</h1><p>Understand your momentum and where your time goes.</p></div><select class="period-select"><option>Last 30 days</option><option>Last 90 days</option></select></div>
+          <div class="analytics-grid">
+            <div class="panel big-chart"><div class="panel-head"><div><h2>Learning hours</h2><p>Weekly investment</p></div><strong>18.6h</strong></div><canvas id="analyticsChart" width="800" height="300"></canvas></div>
+            <div class="panel"><div class="panel-head"><div><h2>Skill balance</h2><p>Current distribution</p></div></div><div class="donut"><div><b>78%</b><span>overall</span></div></div><div class="legend"><span><i></i>Frontend 48%</span><span><i></i>Backend 27%</span><span><i></i>Tools 15%</span><span><i></i>Other 10%</span></div></div>
+            <div class="panel"><div class="panel-head"><div><h2>Consistency</h2><p>Daily activity</p></div></div><div class="heatmap" id="heatmap"></div><div class="heat-label"><span>Less</span><span>More</span></div></div>
+            <div class="panel milestones"><div class="panel-head"><div><h2>Milestones</h2><p>Your recent wins</p></div></div><div class="milestone"><b>⚡</b><span><strong>7-day streak</strong><small>Achieved today</small></span></div><div class="milestone"><b>◈</b><span><strong>10 skills tracked</strong><small>Achieved Sep 24</small></span></div><div class="milestone"><b>✓</b><span><strong>First portfolio project</strong><small>Achieved Sep 18</small></span></div></div>
+          </div>
+        </section>
+
+        <!-- PROFILE -->
+        <section class="page" id="page-profile">
+          <div class="profile-banner"><div class="profile-avatar">BP</div><div><span class="eyebrow">PROFILE</span><h1>Bhanu Prakash</h1><p>Aspiring Frontend Developer · Bengaluru, India</p></div><button class="outline-btn" onclick="showToast('Profile editor opened')">Edit profile</button></div>
+          <div class="profile-grid"><div class="panel"><h2>About</h2><p class="about-text">MCA student focused on frontend development. Building practical projects with HTML, CSS and JavaScript while preparing for software development opportunities.</p><div class="contact-row"><span>✉</span> bhanu@example.com</div><div class="contact-row"><span>⌁</span> github.com/bhanu</div></div><div class="panel"><h2>Career preferences</h2><div class="pref"><span>Target role</span><b>Frontend Developer</b></div><div class="pref"><span>Work preference</span><b>Hybrid / Remote</b></div><div class="pref"><span>Availability</span><b class="available">● Open to opportunities</b></div><div class="pref"><span>Experience</span><b>Fresher</b></div></div></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="skillModal"><div class="modal"><button class="modal-close" onclick="closeModal('skillModal')">×</button><h2>Add a skill</h2><p>Track another technology in your toolkit.</p><label>Skill name<input id="newSkill" placeholder="e.g. TypeScript"></label><label>Category<select><option>Frontend</option><option>Backend</option><option>Tools</option></select></label><button class="primary-btn full-btn" onclick="addSkill()">Add skill</button></div></div>
+  <div class="modal-backdrop" id="projectModal"><div class="modal"><button class="modal-close" onclick="closeModal('projectModal')">×</button><h2>Create a project</h2><p>Add a project to your portfolio.</p><label>Project name<input id="newProject" placeholder="e.g. Campus Connect"></label><label>Description<textarea placeholder="What did you build?"></textarea></label><button class="primary-btn full-btn" onclick="addProject()">Create project</button></div></div>
+  <div class="toast" id="toast">Done!</div>
+  <script src="js/app.js"></script>
+</body>
+</html>
